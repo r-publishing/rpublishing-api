@@ -1,0 +1,58 @@
+{
+  "name": "rpublishing-api",
+  "version": "0.0.1",
+  "description": "api",
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10.16"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "pretest": "yarn run rebuild",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js",
+    "premigrate": "yarn run build",
+    "migrate": "node ./dist/migrate",
+    "preopenapi-spec": "yarn run build",
+    "openapi-spec": "node ./dist/openapi-spec",
+    "prestart": "yarn run rebuild",
+    "start": "node -r source-map-support/register .",
+    "clean": "npx lb-clean dist *.tsbuildinfo .eslintcache",
+    "rebuild": "yarn run clean && yarn run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Theo <theo.hallenius@gmail.com>",
+  "license": "",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "dependencies": {
+    "@loopback/boot": "^3.4.3",
+    "@loopback/core": "^2.17.0",
+    "@loopback/repository": "^3.7.2",
+    "@loopback/rest": "^10.0.1",
+    "@loopback/rest-explorer": "^3.3.3",
+    "@loopback/service-proxy": "^3.2.3",
+    "loopback4-rpublishing": "https://github.com/r-publishing/lb4-rpublishing.git",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^7.0.1",
+    "@loopback/testlab": "^3.4.3",
+    "@types/node": "^10.17.60",
+    "source-map-support": "^0.5.20",
+    "typescript": "~4.3.5"
+  }
+}
