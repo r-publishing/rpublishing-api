@@ -60,6 +60,12 @@ export class DemoController {
       ...this?.demoData,
     } as Demo
 
-    return this.demoRepository.create(demo2);
+    if (demo2.masterRegistryUri !== "") {
+      return this.demoRepository.create(demo2);
+    }
+    else {
+      return {} as Demo;
+    }
+
   }
 }
